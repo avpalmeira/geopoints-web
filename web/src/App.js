@@ -1,12 +1,12 @@
 import React from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu } from 'antd';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Map from './components/Map';
 
 import 'antd/dist/antd.css';
 import './index.css';
 
-function App() {
+function App(props) {
   const { Header, Content, Footer } = Layout;
 
 	return (
@@ -25,10 +25,6 @@ function App() {
         </Header>
         
         <Content style={{ padding: '0 50px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-            <Breadcrumb.Item>Maps</Breadcrumb.Item>
-          </Breadcrumb>
           <div className="site-layout-content">
             <Switch>
               <Route path="/import"><h1>Import CSV file</h1></Route>
