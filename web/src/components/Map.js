@@ -16,7 +16,7 @@ const MapContainer = (props) => {
 
   return (
     <div>
-      <Select defaultValue={1} style={{ width: 120, marginBottom: 40 }}>
+      <Select defaultValue={1} style={{ width: 120, marginBottom: 24 }}>
         <Option value={1}>One</Option>
         <Option value={2}>Two</Option>
       </Select>
