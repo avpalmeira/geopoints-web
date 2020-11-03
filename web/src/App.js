@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Map from './components/Map';
+import Importer from './components/Importer';
 
 import 'antd/dist/antd.css';
 import './index.css';
@@ -27,7 +28,7 @@ function App(props) {
         <Content style={{ padding: '0 50px' }}>
           <div className="site-layout-content">
             <Switch>
-              <Route path="/import"><h1>Import CSV file</h1></Route>
+              <Route path="/import"><Importer/></Route>
               <Route path="/"><Map/></Route>
             </Switch>
           </div>
