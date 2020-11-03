@@ -1,4 +1,5 @@
 import React from 'react';
+import { Select } from 'antd';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
 const MapContainer = (props) => {
@@ -11,24 +12,32 @@ const MapContainer = (props) => {
     lng: 36.8233,
   };
 
+  const { Option } = Select;
+
   return (
-    <Map
-      google={props.google}
-      zoom={14}
-      style={mapStyles}
-      initialCenter={center}
-    >
-      <Marker
-        title="Kenyatta"
-      />
-      <Marker
-        title="Hilton Nairobi"
-        position={{
-          lat: -1.2851297,
-          lng: 36.8225361
-        }}
-      />
-    </Map>
+    <div>
+      <Select defaultValue={1} style={{ width: 120, marginBottom: 40 }}>
+        <Option value={1}>One</Option>
+        <Option value={2}>Two</Option>
+      </Select>
+      <Map
+        google={props.google}
+        zoom={14}
+        style={mapStyles}
+        initialCenter={center}
+      >
+        <Marker
+          title="Kenyatta"
+        />
+        <Marker
+          title="Hilton Nairobi"
+          position={{
+            lat: -1.2851297,
+            lng: 36.8225361
+          }}
+        />
+      </Map>
+    </div>
   );
 }
 
