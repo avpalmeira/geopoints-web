@@ -33,5 +33,5 @@ const MapContainer = (props) => {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBrX59vxvPa_Zhm01kSuJr4ZCnxMJkMpnU'
+  apiKey: process.env.REACT_APP_GMAPS_API_KEY
 })(MapContainer);
