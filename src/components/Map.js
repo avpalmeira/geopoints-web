@@ -28,21 +28,35 @@ const MapContainer = (props) => {
     fetchBatches();
   }, []);
 
-  // useEffect:
-  //  get /geobatches/currentBatch.id
-  //  center = coordinates[0]
-  // onCurrentBatchChange = (id) => { get /geobatches/id }
+  // useEffect[currentBatch]:
+  //  const locations = await api.get(`/geobatches/${currentBatch.id}`);
+  //  center = {
+  //    lat: locations[0].coordinates[0],
+  //    lng: locations[0].coordinates[1],
+  //  };
+
+  const handleCurrentBatchChange = (value) => {
+    let current = null;
+    batches.forEach((batch) => {
+      if (batch.id === value) {
+        current = batch;
+        return;
+      }
+    });
+    if (current !== null) {
+      setCurrentBatch(current);
+    }
+  };
 
   return (
     <div>
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: 24  }}>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: 24 }}>
         <Select
-          defaultValue={currentBatch ? currentBatch.id : 0}
+          defaultValue={currentBatch ? currentBatch.id : 'Default'}
+          onChange={handleCurrentBatchChange}
           style={{ width: 120 }}>
-
-          <Option value={0}>Default</Option>
-          {(batches !== []) ? batches.map((batch) => (
-            <Option value={batch.id}>{batch.name}</Option>
+          {(batches !== []) ? batches.map((batch, index) => (
+            <Option key={index} value={batch.id}>{batch.name}</Option>
           )) : null}
         </Select>
         <span style={{ marginLeft: '20px' }}>
