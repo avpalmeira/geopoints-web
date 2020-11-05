@@ -64,14 +64,14 @@ const MapContainer = (props) => {
           )) : null}
         </Select>
         <span style={{ marginLeft: '20px' }}>
-          Caminho do arquivo: {currentBatch ? currentBatch.filePath : 'inexistente'}
+          URL do arquivo: {currentBatch ? currentBatch.filePath : 'inexistente'}
         </span>
       </div>
       <Map
         google={props.google}
         zoom={13}
         style={mapStyles}
-        initialCenter={center}
+        center={center}
       >
         {locations ? locations.map((geoLocation, index) => (
           <Marker
