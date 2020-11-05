@@ -35,15 +35,20 @@ const MapContainer = (props) => {
 
   return (
     <div>
-      <Select
-        defaultValue={currentBatch ? currentBatch.id : 1}
-        style={{ width: 120, marginBottom: 24 }}>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: 24  }}>
+        <Select
+          defaultValue={currentBatch ? currentBatch.id : 0}
+          style={{ width: 120 }}>
 
-        <Option value={1}>Default</Option>
-        {(batches !== []) ? batches.map((batch) => (
-          <Option value={batch.id}>{batch.name}</Option>
-        )) : null}
-      </Select>
+          <Option value={0}>Default</Option>
+          {(batches !== []) ? batches.map((batch) => (
+            <Option value={batch.id}>{batch.name}</Option>
+          )) : null}
+        </Select>
+        <span style={{ marginLeft: '20px' }}>
+          Caminho do arquivo: {currentBatch ? currentBatch.filePath : 'inexistente'}
+        </span>
+      </div>
       <Map
         google={props.google}
         zoom={13}
