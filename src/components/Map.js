@@ -8,13 +8,11 @@ const MapContainer = (props) => {
     width: '800px',
     height: '400px',
   };
-  const center = {
-    lat: -8.0368227,
-    lng: -34.953473,
-  };
 
   const { Option } = Select;
 
+  const [ locations, setLocations ] = useState([]);
+  const [ center, setCenter ] = useState({ lat: -8.0368227, lng: -34.953473 });
   const [ batches, setBatches ] = useState([]);
   const [ currentBatch, setCurrentBatch ] = useState(null);
 
@@ -24,16 +22,22 @@ const MapContainer = (props) => {
       setBatches(allBatches.data);
       setCurrentBatch(allBatches.data[0]);
     }
-
     fetchBatches();
   }, []);
 
-  // useEffect[currentBatch]:
-  //  const locations = await api.get(`/geobatches/${currentBatch.id}`);
-  //  center = {
-  //    lat: locations[0].coordinates[0],
-  //    lng: locations[0].coordinates[1],
-  //  };
+  useEffect(() => {
+    const fetchLocations = async () => {
+      if (currentBatch) {
+        const locations = await api.get(`/geobatches/${currentBatch.id}`);
+        setLocations(locations.data);
+        setCenter({
+          lat: locations.data[0].coordinates[0],
+          lng: locations.data[0].coordinates[1],
+        });
+      }
+    }
+    fetchLocations();
+  }, [currentBatch]);
 
   const handleCurrentBatchChange = (value) => {
     let current = null;
@@ -69,16 +73,15 @@ const MapContainer = (props) => {
         style={mapStyles}
         initialCenter={center}
       >
-        <Marker
-          title="Hospital Barão de Lucena"
-        />
-        <Marker
-          title="UFPE"
-          position={{
-            lat: -8.0538987,
-            lng: -34.9596218,
-          }}
-        />
+        {locations ? locations.map((geoLocation, index) => (
+          <Marker
+            key={index}
+            position={{
+              lat: geoLocation.coordinates[0],
+              lng: geoLocation.coordinates[1],
+            }}
+          />
+        )) : <Marker position={center}/> }
       </Map>
     </div>
   );
