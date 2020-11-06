@@ -20,6 +20,10 @@ code {
   display: flex;
 }
 
+.main-content {
+  padding: 0 50px;
+}
+
 .site-layout-content {
   height: 100%;
   padding: 24px;
@@ -32,6 +36,25 @@ code {
   margin: 16px 24px 16px 0;
   background: rgba(255, 255, 255, 0.3);
 }
+
+.footer {
+  text-align: center;
+}
+
+.select-batch-container {
+ display: flex;
+ align-items: center;
+ margin-bottom: 24px;
+}
+
+.select-batch {
+  width: 120px;
+}
+
+.selected-batch-path {
+  margin-left: 20px;
+}
+
 
 /* OVERRIDING SPECIFIED UI LIBRARY DESIGNS */
 

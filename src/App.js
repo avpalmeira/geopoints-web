@@ -25,7 +25,7 @@ function App(props) {
           </Menu>
         </Header>
         
-        <Content style={{ padding: '0 50px' }}>
+        <Content className="main-content">
           <div className="site-layout-content">
             <Switch>
               <Route path="/import"><Importer/></Route>
@@ -34,7 +34,7 @@ function App(props) {
           </div>
         </Content>
       </Router>
-			<Footer style={{ textAlign: 'center' }}>Made with {"<3"}</Footer>
+			<Footer className="footer">Made with {"<3"}</Footer>
 		</Layout>
 	);
 }

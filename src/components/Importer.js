@@ -22,6 +22,13 @@ const Importer = (props) => {
   const [ url, setUrl ] = useState("");
   const [ name, setName ] = useState("");
 
+  const inputStyles = {
+    maxWidth: 450,
+    display: "block",
+    marginBottom: 20,
+    marginTop: 20,
+  }
+
   return (
     <div>
       <h1>Importar arquivo CSV</h1>
@@ -29,13 +36,13 @@ const Importer = (props) => {
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Nome do grupo de pontos a serem importados"
-        style={{ maxWidth: '450px', display: 'block', marginBottom: '20px', marginTop: '20px'}}
+        style={inputStyles}
       />
       <Input
         value={url}
         onChange={(e) => setUrl(e.target.value)}
         placeholder="URL onde está o arquivo CSV de destino"
-        style={{ maxWidth: '450px', display: 'block', marginBottom: '20px', marginTop: '20px'}}
+        style={inputStyles}
       />
       <button onClick={handleImport}>Importar agora</button>
     </div>
